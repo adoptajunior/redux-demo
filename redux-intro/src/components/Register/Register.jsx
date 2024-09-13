@@ -19,6 +19,27 @@ const Register = () => {
     // inicializamos dispatch
     const dispatch = useDispatch()
 
+    // DIA 2: LOGOUT
+    // Traemos del estado auth los estados isSuccess y message.
+    // En el useEffect() si isSuccess  cambia, mostrará una notificación de éxito 
+    // y el mensaje que devuelva el back
+    const { isSuccess, message, isError } = useSelector((state) => state.auth)
+    useEffect(() => {
+        if (isSuccess) {
+            notification.success({
+                message: 'Success',
+                description: message,
+            })
+        }
+        if (isError) {
+            notification.error({ message: 'Error', description: message })
+        }
+
+        // Cada vez que se ejecute useEffect despachamos la acción de reset que importamos del authSlice
+        dispatch(reset())
+    }, [isSuccess, isError, message])
+
+
     const onChange = (e) => {
         const { name, value } = e.target
         // componente local

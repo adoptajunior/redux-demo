@@ -21,9 +21,23 @@ const login = async (userData) => {
     return res.data
 }
 
+// Definimos nuestro servicio que hará la petición axios al backend 
+// que deslogueará al usuario
+const logout = async () => {
+    const token = JSON.parse(localStorage.getItem('token'))
+    const res = await axios.delete(`${API_URL}/users/logout`, {
+        // pasamos el token por headers en la petición axios
+        headers: {
+            authorization: token,
+        }
+    })
+    // borramos al usuario del localStorage
+    if (res.data) localStorage.clear()
+    return res.data
+}
 
 const authService = {
-    register, login,
+    register, login, logout,
 }
 
 export default authService
