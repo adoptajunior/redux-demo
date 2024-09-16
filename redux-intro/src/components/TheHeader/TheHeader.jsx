@@ -18,13 +18,15 @@ const TheHeader = () => {
     // en el header creamos un enlace para la ruta del perfil 
     // que se llamará con el nombre del usuario logueado
 
+    // Sacamos el link de home para que se vea siempre
+    // moverlo hacia arriba
     return (
         <nav>
+            <Link to="/">Home</Link>
             <h1>header</h1>
             {user ? (
                 <>
                     <button onClick={onLogout}>Logout</button>
-                    <Link to="/">Home</Link>
                     <Link to="/profile">Profile | {user.name}</Link>
                 </>
             ) : (
