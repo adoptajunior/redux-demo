@@ -1,8 +1,21 @@
-# React + Vite
+# MERN PROJECT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+MERN is a pre-built technology stack based on JavaScript technologies. MERN stands for: MongoDB, Express, React, and Node, after the four key technologies that make up the stack.
 
-Currently, two official plugins are available:
+- MongoDB — document database
+- Express(.js) — Node.js web framework
+- React(.js) — a client-side JavaScript framework
+- Node(.js) — the premier JavaScript web server (runtime)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Express and Node make up the middle (application) tier. Express.js is a server-side web framework, and Node.js is the popular and powerful JavaScript server platform. Regardless of which variant you choose, ME(RVA)N is the ideal approach to working with JavaScript and JSON, all the way through.
+
+# REQUIREMENTS
+
+- User registration.
+- User login.
+- View posts and create new ones.
+- Edit and delete the posts made by the logged in user.
+- Like/unlike a post.
+- Search for user profiles or posts.
+- User personal data / profile view.
+- Comments on posts.
