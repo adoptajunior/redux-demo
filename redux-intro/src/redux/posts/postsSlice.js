@@ -6,56 +6,56 @@ Creamos nuestro slice y dentro un extraReducer para que cuando
 el getAll sea exitoso cambie el estado con lo que nos devuelve
 */
 
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"
-import postsService from "./postsService"
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import postsService from "./postsService";
+
 const initialState = {
-    posts: [],
-    isLoading: false,
-    post: {},
-}
+  posts: [],
+  isLoading: false,
+  post: {},
+};
 
 export const getAll = createAsyncThunk("posts/getAll", async () => {
-    try {
-        return await postsService.getAll();
-    } catch (error) {
-        console.error(error);
-    }
-})
+  try {
+    return await postsService.getAll();
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 export const getById = createAsyncThunk("posts/getById", async (id) => {
-    try {
-        return await postsService.getById(id)
-    } catch (error) {
-        console.error(error)
-    }
-})
+  try {
+    return await postsService.getById(id);
+  } catch (error) {
+    console.error(error);
+  }
+});
 
 export const postsSlice = createSlice({
-    name: "posts",
-    initialState,
+  name: "posts",
+  initialState,
 
-    reducers: {
-        reset: (state) => {
-            state.isLoading = false;
-        },
+  reducers: {
+    reset: (state) => {
+      state.isLoading = false;
     },
+  },
 
-    extraReducers: (builder) => {
-        builder.addCase(getAll.fulfilled, (state, action) => {
-            state.posts = action.payload;
-        }).addCase(getAll.pending, (state) => {
-            state.isLoading = true;
-        })
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAll.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
+      .addCase(getAll.pending, (state) => {
+        state.isLoading = true;
+      });
 
-        builder.addCase(getById.fulfilled, (state, action) => {
-            state.post = action.payload
-        })
+    builder.addCase(getById.fulfilled, (state, action) => {
+      state.post = action.payload;
+    });
+  },
+});
 
-    },
+export const { reset } = postsSlice.actions;
 
-})
-
-
-export const { reset } = postsSlice.actions
-
-export default postsSlice.reducer
+export default postsSlice.reducer;

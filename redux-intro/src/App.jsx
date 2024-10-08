@@ -5,6 +5,7 @@ import Home from './components/Home/Home'
 import Profile from './components/Profile/Profile'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import PostDetail from "./components/Posts/PostDetail"
+import AdminZone from './guards/AdminZone'
 
 function App() {
   return (
@@ -15,8 +16,16 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={
+            // Clase 20/09/24 guardas:
+            // Añadimos la nueva opción para acceder a la ruta del profile.
+            <PrivateZone>
+              <Profile />
+            </PrivateZone>
+          } />
           <Route path="/post/:id" element={<PostDetail />} />
+          <Route path="/admin" element={<AdminZone> <Admin /> </AdminZone>} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>

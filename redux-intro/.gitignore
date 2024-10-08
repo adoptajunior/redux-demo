@@ -8,6 +8,10 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+config/keys.js
+config/config.js
+package-lock.json
+docker-compose.yml
 dist
 dist-ssr
 *.local
